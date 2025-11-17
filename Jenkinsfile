@@ -17,7 +17,7 @@ pipeline {
         stage('Build Image from ONBUILD Base') {
             steps {
                 script {
-                    sh "docker build -t ${DOCKER_IMAGE} ."
+                    sh "docker build -t ${DOCKER_IMAGE} -f Dockerfile.base ."
                 }
             }
         }
