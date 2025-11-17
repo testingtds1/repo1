@@ -17,7 +17,7 @@ pipeline {
         stage('Build Image from ONBUILD Base') {
             steps {
                 script {
-                    sh "docker build -t ${DOCKER_IMAGE} -f Dockerfile.base ."
+                    sh "docker build -t ${DOCKER_IMAGE} -f  ."
                 }
             }
         }
@@ -41,7 +41,6 @@ pipeline {
         stage('Deploy Container') {
             steps {
                 script {
-                    sh "docker pull ${DOCKER_IMAGE}:latest"
                     sh "docker rm -f ${CONTAINER_NAME} || true"
                     sh "docker run -d --name ${CONTAINER_NAME} -p 80:80 ${DOCKER_IMAGE}"
                 }
